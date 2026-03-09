@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keindahan Ramadhan - Editor: Fikri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&family=Great+Vibes&display=swap');
+
+        :root {
+            --sky-blue: #bae6fd;
+            --sea-blue: #0ea5e9;
+            --dark-blue: #0c4a6e;
+            --gold: #f59e0b;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'Playfair Display', serif; }
+        .calligraphy { font-family: 'Great Vibes', cursive; }
+
+        .islamic-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l2.598 15L45 12.402l-7.5 12.598L52.5 30l-15 2.598L45 45l-12.598-7.5L30 52.5l-2.598-15L15 45l7.5-12.598L7.5 30l15-2.598L15 15l12.598 7.5L30 0z' fill='%231e293b' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); transform-origin: top; }
+            50% { transform: rotate(5deg); transform-origin: top; }
+        }
+        .animate-sway { animation: sway 3s ease-in-out infinite; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) linear infinite; }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4)); }
+            50% { filter: drop-shadow(0 0 20px rgba(245, 158, 11, 0.7)); }
+        }
+        .moon-glow { animation: glow 4s ease-in-out infinite; }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(186, 230, 253, 0.1);
+        }
+
+        /* Fixed Watermark */
+        .watermark-fikri {
+            position: fixed;
+            bottom: 12px;
+            right: 12px;
+            z-index: 200;
+            background: rgba(12, 74, 110, 0.8);
+            backdrop-filter: blur(5px);
+            padding: 4px 12px;
+            border-radius: 30px;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            font-size: 8px;
+            font-weight: 800;
+            color: #bae6fd;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        /* Modal Student List Scrollbar */
+        .list-scroll {
+            max-height: 55vh;
+            overflow-y: auto;
+        }
+        .list-scroll::-webkit-scrollbar { width: 4px; }
+        .list-scroll::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
+    </style>
+</head>
+<body class="islamic-bg">
+
+    <!-- Watermark Pojok -->
+    <div class="watermark-fikri">
+        Kelas 9-2 <span class="mx-1 text-amber-500">|</span> Editor: Fikri
+    </div>
+
+    <!-- Stars Overlay -->
+    <div id="stars-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Modal Daftar Siswa 9-2 -->
+    <div id="modal-students" class="fixed inset-0 z-[1000] hidden items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-md" onclick="hideStudents()"></div>
+        <div class="glass-card relative w-full max-w-sm p-6 rounded-[35px] border border-amber-500/30 animate__animated animate__zoomIn">
+            <button onclick="hideStudents()" class="absolute right-5 top-5 text-sky-200 hover:text-amber-400 transition">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="text-center mb-4">
+                <i data-lucide="users" class="mx-auto w-8 h-8 text-amber-400 mb-1"></i>
+                <h3 class="serif text-xl text-sky-100">Daftar Siswa 9-2</h3>
+                <div class="w-12 h-0.5 bg-amber-500 mx-auto mt-1"></div>
+            </div>
+            <div class="list-scroll pr-2">
+                <ul class="space-y-1.5 text-sky-100 text-[13px] font-medium">
+                    <li>• Ade Yoga</li>
+                    <li>• Adel</li>
+                    <li>• Ainun</li>
+                    <li>• Agis</li>
+                    <li>• Aji</li>
+                    <li>• Alvin</li>
+                    <li>• Aulia Indri</li>
+                    <li>• Aprilia</li>
+                    <li>• Daffa</li>
+                    <li>• Debi</li>
+                    <li>• Fikri</li>
+                    <li>• Irpan</li>
+                    <li>• Kania</li>
+                    <li>• Firman</li>
+                    <li>• Azhar</li>
+                    <li>• Refi</li>
+                    <li>• Rasya</li>
+                    <li>• Putri</li>
+                    <li>• Rafka</li>
+                    <li>• Rifani</li>
+                    <li>• Bagas</li>
+                    <li>• Sabrina</li>
+                    <li>• Kayla</li>
+                    <li>• Lastri</li>
+                    <li>• Andin</li>
+                    <li>• Mita</li>
+                    <li>• Rifki</li>
+                    <li>• Elisa</li>
+                    <li>• Supriatna</li>
+                    <li>• Sahdan</li>
+                    <li>• Windi</li>
+                    <li>• Ziffara</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full z-[100] px-5 py-3 flex justify-between items-center glass-card border-b border-sky-900/40">
+        <div class="flex items-center gap-2">
+            <i data-lucide="moon-star" class="text-amber-400 w-5 h-5"></i>
+            <span class="font-bold tracking-tight text-sky-200 text-sm uppercase">Ramadhan</span>
+        </div>
+        <button onclick="toggleSidebar()" class="p-1 text-sky-200"><i data-lucide="menu"></i></button>
+    </nav>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar" class="fixed inset-y-0 right-0 w-64 glass-card z-[500] translate-x-full transition-transform duration-500 p-8 flex flex-col gap-6 shadow-2xl">
+        <button onclick="toggleSidebar()" class="self-end text-amber-400"><i data-lucide="x"></i></button>
+        <div class="mb-2 border-b border-sky-900 pb-4">
+            <p class="text-[10px] text-amber-500 font-bold uppercase mb-1">Penyusun</p>
+            <p class="font-bold text-sky-100 uppercase tracking-tighter">Fikri - Kelas 9-2</p>
+        </div>
+        <a href="#cover" class="hover:text-amber-400 transition text-sm font-semibold" onclick="toggleSidebar()">Cover Majalah</a>
+        <a href="#materi" class="hover:text-amber-400 transition text-sm font-semibold" onclick="toggleSidebar()">Materi Lengkap</a>
+        <a href="#tips" class="hover:text-amber-400 transition text-sm font-semibold" onclick="toggleSidebar()">Tips & Hikmah</a>
+        <a href="#penutup" class="hover:text-amber-400 transition text-sm font-semibold" onclick="toggleSidebar()">Penutup</a>
+    </div>
+
+    <!-- PAGE 1: COVER -->
+    <section id="cover" class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 pb-40">
+        <!-- Decoration -->
+        <div class="relative mb-6 moon-glow">
+            <svg width="100" height="100" viewBox="0 0 100 100" class="text-amber-100 fill-current">
+                <path d="M50 10A40 40 0 1 0 90 50A30 30 0 1 1 50 10Z" />
+            </svg>
+            <div class="absolute -right-2 top-6 animate-sway">
+                <svg width="25" height="40" viewBox="0 0 40 60" fill="none">
+                    <rect x="5" y="10" width="30" height="40" rx="4" fill="#fbbf24" fill-opacity="0.8" />
+                    <path d="M10 0 L30 0 L35 10 L5 10 Z" fill="#f59e0b" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="z-10 animate__animated animate__fadeIn">
+            <!-- Font pas untuk layar HP -->
+            <h1 class="serif text-4xl sm:text-6xl text-sky-100 mb-0">Keindahan</h1>
+            <h2 class="calligraphy text-4xl sm:text-6xl text-amber-400 -mt-2">Ramadhan</h2>
+            <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto my-5"></div>
+            <p class="text-sky-300 font-bold tracking-[0.15em] uppercase text-[10px] max-w-[280px] mx-auto mb-6">
+                Makna, Hikmah, dan Keutamaan Puasa
+            </p>
+            <div class="px-4 py-1.5 rounded-full border border-sky-800 bg-sky-950/50 inline-block">
+                <span class="text-[9px] font-extrabold text-amber-200 tracking-[2px] uppercase">KELAS 9-2 • FIKRI</span>
+            </div>
+        </div>
+
+        <!-- Tombol Panah Klik Siswa (Dipindah lebih ke bawah agar tidak bertumpuk) -->
+        <div class="absolute bottom-20 flex flex-col items-center gap-2 cursor-pointer z-[110]" onclick="showStudents()">
+            <p class="text-[9px] font-black text-amber-400 uppercase tracking-[3px] animate-pulse">Click tanda panah ini</p>
+            <div class="animate-bounce bg-sky-900/30 p-2 rounded-full border border-sky-800/50">
+                <i data-lucide="chevron-down" class="text-sky-200 w-7 h-7"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 2: MATERI UTAMA -->
+    <section id="materi" class="py-24 px-6 bg-[#010413]">
+        <div class="max-w-md mx-auto">
+            <div class="reveal mb-12 text-center">
+                <h3 class="serif text-3xl text-sky-200 mb-2 uppercase tracking-widest">Materi Puasa</h3>
+                <div class="h-1 w-12 bg-amber-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="space-y-5">
+                <!-- Pengertian -->
+                <div class="reveal glass-card p-6 rounded-3xl border-l-4 border-sky-500">
+                    <h4 class="font-bold text-amber-400 text-[10px] uppercase mb-1 tracking-widest">Pengertian</h4>
+                    <p class="text-[13px] text-sky-100 leading-relaxed">Secara bahasa berarti menahan diri. Secara istilah syariat adalah menahan diri dari segala pembatal puasa mulai fajar hingga maghrib dengan niat ibadah.</p>
+                </div>
+
+                <!-- Dalil -->
+                <div class="reveal glass-card p-6 rounded-3xl border-l-4 border-amber-500">
+                    <h4 class="font-bold text-sky-400 text-[10px] uppercase mb-1 tracking-widest">Dalil Al-Qur'an</h4>
+                    <p class="text-[12px] text-sky-100 italic leading-relaxed">"Wahai orang-orang yang beriman! Diwajibkan atas kamu berpuasa sebagaimana diwajibkan atas orang sebelum kamu agar kamu bertaqwa." (QS. Al-Baqarah: 183)</p>
+                </div>
+
+                <!-- Rukun & Syarat -->
+                <div class="reveal glass-card p-6 rounded-3xl grid grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="font-bold text-amber-400 text-[9px] uppercase mb-2 tracking-widest">Rukun Puasa</h4>
+                        <ul class="text-[11px] text-sky-200 space-y-1">
+                            <li>1. Niat</li>
+                            <li>2. Imsak (Menahan diri)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sky-400 text-[9px] uppercase mb-2 tracking-widest">Syarat Wajib</h4>
+                        <ul class="text-[11px] text-sky-200 space-y-1">
+                            <li>1. Islam & Baligh</li>
+                            <li>2. Berakal</li>
+                            <li>3. Mampu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pembatal -->
+                <div class="reveal glass-card p-6 rounded-3xl border border-red-900/30">
+                    <h4 class="font-bold text-red-400 text-[10px] uppercase mb-2 tracking-widest">Hal Membatalkan</h4>
+                    <ul class="text-[12px] text-sky-100 grid grid-cols-2 gap-2">
+                        <li>• Makan/Minum sengaja</li>
+                        <li>• Muntah sengaja</li>
+                        <li>• Haid/Nifas</li>
+                        <li>• Hilang akal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 3: TIPS SEHAT -->
+    <section id="tips" class="py-24 px-6 bg-gradient-to-b from-transparent to-sky-950/20">
+        <div class="max-w-md mx-auto">
+            <h3 class="reveal serif text-3xl text-sky-100 text-center mb-12">Tips <span class="text-amber-400">Sehat</span></h3>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="reveal glass-card p-5 rounded-3xl flex items-center gap-4">
+                    <div class="p-3 bg-blue-600/20 rounded-2xl text-sky-300"><i data-lucide="coffee"></i></div>
+                    <div>
+                        <h5 class="font-bold text-sm text-sky-100">Tips Sahur</h5>
+                        <p class="text-[11px] text-sky-400">Pilih karbohidrat kompleks agar energi awet seharian.</p>
+                    </div>
+                </div>
+                <div class="reveal glass-card p-5 rounded-3xl flex items-center gap-4">
+                    <div class="p-3 bg-amber-600/20 rounded-2xl text-amber-300"><i data-lucide="utensils"></i></div>
+                    <div>
+                        <h5 class="font-bold text-sm text-sky-100">Tips Berbuka</h5>
+                        <p class="text-[11px] text-sky-400">Awali dengan air putih dan kurma. Hindari makan berlebih.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 4: QUOTES -->
+    <section class="py-24 px-6 text-center">
+        <div class="reveal max-w-xs mx-auto">
+            <i data-lucide="quote" class="text-amber-500/20 w-12 h-12 mx-auto mb-6"></i>
+            <p class="serif text-xl text-sky-100 leading-relaxed italic mb-4">"Puasa melatih kesabaran, memperkuat empati, dan membersihkan jiwa."</p>
+            <p class="text-amber-500 font-bold uppercase tracking-widest text-[10px]">— Pesan Bijak Ramadhan</p>
+        </div>
+    </section>
+
+    <!-- PAGE 5: PENUTUP -->
+    <section id="penutup" class="min-h-screen py-24 px-6 flex flex-col items-center justify-center text-center">
+        <div class="reveal glass-card p-10 rounded-[40px] border border-sky-800/50 max-w-xs w-full">
+            <h3 class="serif text-3xl text-sky-100 mb-6">Penutup</h3>
+            <p class="text-sky-300 text-sm mb-10 leading-relaxed">
+                Semoga materi ini bermanfaat dan membuat kita semakin bersemangat menjalankan ibadah di bulan suci Ramadhan.
+            </p>
+            <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="w-full bg-blue-600 text-white py-3 rounded-full font-bold text-sm">Kembali Ke Atas</button>
+            <p class="mt-8 text-[9px] font-black text-amber-500 uppercase tracking-[4px]">EDITOR: FIKRI 9-2</p>
+        </div>
+    </section>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Stars Background
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 60; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 0.5;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.setProperty('--d', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('translate-x-full');
+        }
+
+        function showStudents() {
+            const modal = document.getElementById('modal-students');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideStudents() {
+            const modal = document.getElementById('modal-students');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+    </script>
+</body>
+</html>
+
