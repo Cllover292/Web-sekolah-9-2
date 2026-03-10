@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ensiklopedia Ramadhan - Editor: Fikri 9-2</title>
+    <title>P5: Keindahan Ramadhan - SMPN 3 LEUWILIANG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -32,7 +32,6 @@
             background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 0l5 25h25l-20 15 7.5 25-22.5-17.5L12.5 65l7.5-25-20-15h25z' fill='%231e293b' fill-opacity='0.2'/%3E%3C/svg%3E");
         }
 
-        /* Animations */
         @keyframes sway {
             0%, 100% { transform: rotate(-5deg); transform-origin: top; }
             50% { transform: rotate(5deg); transform-origin: top; }
@@ -45,7 +44,7 @@
         }
         .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) infinite; }
 
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s ease-out; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         .glass-card {
@@ -68,10 +67,8 @@
             color: #bae6fd;
             text-transform: uppercase;
             pointer-events: none;
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
         }
 
-        /* Modal Student List */
         .modal-scroll {
             max-height: 55vh;
             overflow-y: auto;
@@ -79,23 +76,30 @@
         .modal-scroll::-webkit-scrollbar { width: 4px; }
         .modal-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
-        .nav-link { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
-        .nav-link:hover { color: var(--gold); }
+        .photo-frame {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            transform: rotate(-1.5deg);
+        }
     </style>
 </head>
 <body class="islamic-pattern">
 
-    <!-- Watermark Pojok -->
-    <div class="watermark-fikri">Kelas 9-2 • Editor: Fikri</div>
+    <!-- Watermark Editor -->
+    <div class="watermark-fikri">9-2 • EDITOR: FIKRI</div>
 
-    <!-- Background Stars -->
+    <!-- Efek Bintang -->
     <div id="stars-container" class="fixed inset-0 pointer-events-none z-0"></div>
 
-    <!-- Header Navigation -->
+    <!-- Navigasi Atas -->
     <nav class="fixed top-0 w-full z-[100] glass-card px-6 py-4 flex justify-between items-center border-b border-sky-900/50">
-        <div class="flex items-center gap-2">
-            <i data-lucide="moon-star" class="text-amber-400"></i>
-            <span class="font-bold tracking-tighter text-sky-200 uppercase">P5<span class="text-amber-400">.Ramadhan</span></span>
+        <div class="flex items-center gap-3">
+            <img src="1773111398464.png" alt="Logo SMPN 3 LEUWILIANG" class="w-8 h-8 object-contain" onerror="this.src='https://via.placeholder.com/50?text=SMPN3'">
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tighter text-sky-200 text-xs leading-none uppercase">SMPN 3 LEUWILIANG</span>
+                <span class="text-[8px] text-amber-500 font-bold uppercase tracking-widest leading-none mt-1">P5 Digital Ensiklopedia</span>
+            </div>
         </div>
         <button onclick="toggleSidebar()" class="text-sky-200"><i data-lucide="menu"></i></button>
     </nav>
@@ -103,179 +107,97 @@
     <!-- Sidebar Menu -->
     <div id="sidebar" class="fixed inset-y-0 right-0 w-64 glass-card z-[500] translate-x-full transition-transform duration-500 p-8 flex flex-col gap-6 shadow-2xl">
         <button onclick="toggleSidebar()" class="self-end text-amber-400"><i data-lucide="x"></i></button>
-        <p class="text-[10px] text-amber-500 font-bold uppercase border-b border-sky-900 pb-2">Konten Majalah</p>
-        <a href="#cover" class="nav-link" onclick="toggleSidebar()">Sampul Utama</a>
-        <a href="#sejarah" class="nav-link" onclick="toggleSidebar()">Sejarah & Asal Usul</a>
-        <a href="#fiqh" class="nav-link" onclick="toggleSidebar()">Fiqh Puasa Lengkap</a>
-        <a href="#fase" class="nav-link" onclick="toggleSidebar()">Tiga Fase Ramadhan</a>
-        <a href="#sains" class="nav-link" onclick="toggleSidebar()">Analisis Kedokteran</a>
-        <a href="#sosial" class="nav-link" onclick="toggleSidebar()">Zakat & Sosial</a>
-        <a href="#tips" class="nav-link" onclick="toggleSidebar()">Panduan Sehat</a>
+        <p class="text-[10px] text-amber-500 font-bold uppercase border-b border-sky-900 pb-2">Konten Lengkap</p>
+        <a href="#cover" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Sampul</a>
+        <a href="#zakat-section" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Zakat & Dokumentasi</a>
+        <a href="#puasa" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Hakikat Puasa</a>
+        <a href="#adab-section" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Adab & Sunnah</a>
+        <a href="#amalan-section" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Amalan & Lailatul Qadar</a>
+        <a href="#sains" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Sains & Biologi</a>
+        <a href="#p5" class="text-xs font-bold uppercase tracking-widest hover:text-amber-400" onclick="toggleSidebar()">Refleksi P5</a>
     </div>
 
     <!-- PAGE 1: COVER -->
-    <section id="cover" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
-        <div class="relative mb-10 flex flex-col items-center">
-            <!-- Moon -->
-            <div class="filter drop-shadow-[0_0_20px_rgba(251,191,36,0.3)]">
-                <svg width="140" height="140" viewBox="0 0 100 100" class="text-sky-100 fill-current">
+    <section id="cover" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden pt-16">
+        <div class="relative mb-8 text-center flex flex-col items-center">
+            <!-- Logo Sekolah Tengah -->
+            <img src="1773111398464.png" alt="SMPN 3 LEUWILIANG" class="w-24 h-24 mx-auto mb-6 drop-shadow-[0_0_15px_rgba(251,191,36,0.5)] animate-pulse">
+            
+            <div class="relative flex flex-col items-center">
+                <svg width="100" height="100" viewBox="0 0 100 100" class="text-sky-100 fill-current opacity-80">
                     <path d="M50 10A40 40 0 1 0 90 50A30 30 0 1 1 50 10Z" />
                 </svg>
-            </div>
-            <!-- Swaying Lantern -->
-            <div class="absolute -right-4 top-12 animate-sway">
-                <i data-lucide="lamp" class="text-amber-500 w-10 h-10"></i>
+                <div class="absolute -right-2 top-6 animate-sway">
+                    <i data-lucide="lamp" class="text-amber-500 w-8 h-8"></i>
+                </div>
             </div>
         </div>
 
         <div class="z-10">
-            <h1 class="serif text-5xl md:text-7xl text-sky-100 mb-0">Keindahan</h1>
-            <h2 class="calligraphy text-5xl md:text-7xl text-amber-400 -mt-3">Ramadhan</h2>
-            <div class="w-20 h-0.5 bg-amber-500 mx-auto my-6 opacity-60"></div>
-            <p class="text-sky-300 font-bold tracking-[0.2em] uppercase text-[10px] max-w-xs mx-auto mb-10">Makna, Hikmah, & Keutamaan Puasa</p>
+            <h4 class="text-sky-400 font-black text-[10px] uppercase tracking-[0.4em] mb-2 leading-none">SMP NEGERI 3 LEUWILIANG</h4>
+            <h1 class="serif text-4xl text-sky-100 mb-0">Keindahan</h1>
+            <h2 class="calligraphy text-5xl text-amber-400 -mt-2">Ramadhan</h2>
+            <div class="w-16 h-0.5 bg-amber-500 mx-auto my-6 opacity-60"></div>
+            <p class="text-sky-300 font-bold tracking-[0.2em] uppercase text-[9px] max-w-xs mx-auto mb-10 leading-relaxed">Projek Penguatan Profil Pelajar Pancasila</p>
             
-            <div class="px-6 py-2 rounded-full border border-sky-800 bg-sky-950/50 inline-block">
+            <div class="px-6 py-2 rounded-full border border-sky-800 bg-sky-950/40 inline-block">
                 <span class="text-[10px] font-black text-amber-200 tracking-[3px] uppercase">9-2 • EDITOR: FIKRI</span>
             </div>
         </div>
 
-        <!-- Arrow Clicker Siswa -->
-        <div class="absolute bottom-10 left-0 right-0 flex flex-col items-center gap-2 cursor-pointer z-[60]" onclick="showStudents()">
+        <!-- Tombol Daftar Siswa -->
+        <div class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-2 cursor-pointer z-[60]" onclick="showStudents()">
             <span class="text-[9px] font-black text-amber-400 uppercase tracking-[4px] animate-pulse">Click tanda panah ini</span>
-            <div class="animate-bounce p-2 rounded-full bg-sky-900/30 border border-sky-800/40">
+            <div class="animate-bounce p-2 rounded-full bg-sky-900/40 border border-sky-800/50 shadow-xl">
                 <i data-lucide="chevron-down" class="text-sky-200 w-8 h-8"></i>
             </div>
         </div>
     </section>
 
-    <!-- PAGE 2: SEJARAH & MAKNA -->
-    <section id="sejarah" class="py-24 px-8 bg-sky-950/10">
+    <!-- PAGE 2: MATERI ZAKAT & DOKUMENTASI (LAYOUT SESUAI SKETSA) -->
+    <section id="zakat-section" class="py-24 px-6 bg-sky-950/20">
         <div class="max-w-4xl mx-auto">
-            <div class="reveal mb-16 border-l-4 border-amber-500 pl-8">
-                <h3 class="serif text-4xl text-sky-100 mb-6 uppercase tracking-widest">Asal Usul <span class="text-amber-400">Ibadah</span></h3>
-                <p class="text-sky-300/80 leading-relaxed text-lg mb-8">
-                    Puasa Ramadhan pertama kali diwajibkan pada tahun **ke-2 Hijriyah**, tepatnya di bulan Sya'ban. Perintah ini turun melalui firman Allah dalam Surah Al-Baqarah ayat 183. Sebelum kewajiban ini turun, umat Islam melakukan puasa hari Asyura (10 Muharram).
-                </p>
-                <div class="glass-card p-8 rounded-[40px] italic text-sky-100 border border-sky-800/50">
-                    "Tujuan akhir dari madrasah Ramadhan adalah derajat **Taqwa**, sebuah kondisi di mana seorang hamba senantiasa merasa diawasi oleh Sang Pencipta dalam setiap hembusan nafasnya."
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 3: FIQH PUASA LENGKAP -->
-    <section id="fiqh" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-100 uppercase tracking-widest">Fiqh & <span class="text-amber-400">Hukum</span></h3>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Rukun -->
-                <div class="reveal glass-card p-8 rounded-3xl border-t-4 border-amber-500">
-                    <h4 class="font-bold text-amber-500 text-xs mb-4 uppercase tracking-widest">Rukun Puasa</h4>
-                    <ul class="text-sm space-y-2 text-sky-200">
-                        <li>1. Niat (di dalam hati)</li>
-                        <li>2. Menahan diri dari fajar sidiq hingga terbenam matahari</li>
-                    </ul>
-                </div>
-
-                <!-- Syarat Wajib -->
-                <div class="reveal glass-card p-8 rounded-3xl border-t-4 border-sky-500">
-                    <h4 class="font-bold text-sky-500 text-xs mb-4 uppercase tracking-widest">Syarat Wajib</h4>
-                    <ul class="text-sm space-y-2 text-sky-200">
-                        <li>• Islam & Baligh (Dewasa)</li>
-                        <li>• Berakal Sehat</li>
-                        <li>• Mampu Secara Fisik</li>
-                        <li>• Suci dari Haid/Nifas</li>
-                    </ul>
-                </div>
-
-                <!-- Pembatal -->
-                <div class="reveal glass-card p-8 rounded-3xl border-t-4 border-red-500">
-                    <h4 class="font-bold text-red-500 text-xs mb-4 uppercase tracking-widest">Hal Membatalkan</h4>
-                    <ul class="text-sm space-y-2 text-sky-200">
-                        <li>• Makan & Minum (Sengaja)</li>
-                        <li>• Muntah (Sengaja)</li>
-                        <li>• Keluar darah Haid</li>
-                        <li>• Hilang Akal (Gila/Pingsan)</li>
-                    </ul>
-                </div>
-
-                <!-- Golongan Rukhsah -->
-                <div class="reveal glass-card p-8 rounded-3xl col-span-full border-l-4 border-emerald-500">
-                    <h4 class="font-bold text-emerald-500 text-xs mb-4 uppercase tracking-widest">Rukhsah (Keringanan)</h4>
-                    <p class="text-sm text-sky-300 leading-relaxed">Islam memberikan keringanan bagi: **Musafir** (perjalanan jauh), **Orang Sakit** yang memberatkan, **Ibu Hamil/Menyusui**, dan **Orang Tua Rentan**. Mereka wajib mengganti (*Qadha*) atau membayar *Fidyah*.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 4: FASE RAMADHAN -->
-    <section id="fase" class="py-24 px-6 bg-sky-950/20">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-100">Tiga Fase <span class="text-amber-400">Penuh Makna</span></h3>
-            
-            <div class="space-y-6">
-                <div class="reveal glass-card p-8 rounded-3xl flex items-center gap-6 border border-sky-800">
-                    <div class="w-20 h-20 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-400 font-black text-2xl">1</div>
-                    <div>
-                        <h5 class="font-bold text-sky-100">10 Hari Pertama: RAHMAH</h5>
-                        <p class="text-sm text-sky-400">Fase turunnya kasih sayang Allah yang melimpah bagi hamba-Nya yang memulai perjuangan.</p>
-                    </div>
-                </div>
-                <div class="reveal glass-card p-8 rounded-3xl flex items-center gap-6 border border-sky-800">
-                    <div class="w-20 h-20 bg-amber-600/20 rounded-full flex items-center justify-center text-amber-400 font-black text-2xl">2</div>
-                    <div>
-                        <h5 class="font-bold text-sky-100">10 Hari Kedua: MAGHFIRAH</h5>
-                        <p class="text-sm text-sky-400">Fase di mana pintu ampunan dibuka lebar-lebar bagi mereka yang bertaubat dengan sungguh-sungguh.</p>
-                    </div>
-                </div>
-                <div class="reveal glass-card p-8 rounded-3xl flex items-center gap-6 border border-sky-800">
-                    <div class="w-20 h-20 bg-emerald-600/20 rounded-full flex items-center justify-center text-emerald-400 font-black text-2xl">3</div>
-                    <div>
-                        <h5 class="font-bold text-sky-100">10 Hari Ketiga: ITQUN MINAN NAR</h5>
-                        <p class="text-sm text-sky-400">Fase pembebasan dari api neraka. Di fase ini terdapat malam Lailatul Qadar yang lebih baik dari 1000 bulan.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 5: SAINS & KEDOKTERAN -->
-    <section id="sains" class="py-24 px-6 bg-[#020617] relative">
-        <div class="max-w-5xl mx-auto">
             <div class="reveal mb-16 text-center">
-                <h3 class="serif text-4xl text-sky-100 uppercase tracking-widest">Sains & <span class="text-amber-400">Biologi Tubuh</span></h3>
-                <p class="text-xs text-sky-500 mt-2 font-bold tracking-widest">BAGAIMANA ORGAN BEKERJA SAAT PUASA?</p>
+                <h3 class="serif text-4xl text-sky-100 uppercase tracking-widest">Ibadah <span class="text-amber-400 underline underline-offset-8">Zakat</span></h3>
+                <p class="text-[10px] text-sky-400 mt-4 font-black uppercase tracking-[0.3em]">Mensucikan Harta & Jiwa</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="reveal">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i data-lucide="refresh-ccw" class="text-amber-400 w-8 h-8"></i>
-                        <h5 class="font-bold text-xl text-sky-100">Autofagi: Self-Cleaning</h5>
-                    </div>
-                    <p class="text-sm text-sky-300 leading-relaxed mb-6">
-                        Penelitian Nobel Kesehatan membuktikan bahwa puasa memicu **Autofagi**, sebuah proses di mana sel-sel tubuh "memakan" komponen sel yang rusak dan mendaur ulangnya menjadi sel baru yang lebih sehat.
-                    </p>
-                    <div class="bg-blue-900/10 p-4 border-l-2 border-blue-500 rounded-r-xl">
-                        <p class="text-[11px] text-blue-300 uppercase font-bold mb-1">Dampak Medis:</p>
-                        <p class="text-xs text-sky-200 italic">Mencegah Kanker, Penuaan Dini, dan Diabetes Tipe 2.</p>
+            <div class="reveal grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <!-- Sisi Kiri: Foto Dokumentasi (IMG-20260310-WA0005.jpg) -->
+                <div class="flex flex-col items-center">
+                    <div class="mt-4 text-center">
+                            <div class="flex items-center gap-3">
+  <img src="IMG-20260310-WA0005.jpg" alt="Logo SMPN 3 LEUWILIANG"
+                            
+                        </div>
+                        <div class="mt-4 text-center">
+                            <p class="text-[9px] text-slate-500 font-bold uppercase tracking-widest mb-1 leading-none">Dokumentasi</p>
+                            
+                        </div>
                     </div>
                 </div>
 
-                <div class="reveal space-y-6">
-                    <div class="glass-card p-6 rounded-3xl flex gap-4">
-                        <i data-lucide="brain" class="text-sky-400"></i>
-                        <div>
-                            <h6 class="font-bold text-sky-100 text-sm">Optimalisasi Otak</h6>
-                            <p class="text-xs text-sky-400">Meningkatkan protein BDNF yang membantu pertumbuhan saraf otak baru.</p>
-                        </div>
+                <!-- Sisi Kanan: Teks Penjelasan -->
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-3xl border-l-4 border-amber-500 shadow-xl">
+                        <h4 class="font-bold text-lg text-sky-100 mb-3 flex items-center gap-2">
+                            <i data-lucide="heart-handshake" class="text-amber-500"></i> Apa itu Zakat?
+                        </h4>
+                        <p class="text-sm text-sky-300 leading-relaxed">
+                            Zakat adalah mengeluarkan sebagian harta tertentu untuk diberikan kepada golongan yang berhak menerimanya (*Mustahik*). Ia adalah pilar ekonomi umat Islam.
+                        </p>
                     </div>
-                    <div class="glass-card p-6 rounded-3xl flex gap-4">
-                        <i data-lucide="heart" class="text-red-400"></i>
-                        <div>
-                            <h6 class="font-bold text-sky-100 text-sm">Kesehatan Jantung</h6>
-                            <p class="text-xs text-sky-400">Menurunkan kadar kolesterol LDL dan tekanan darah tinggi secara signifikan.</p>
+
+                    <div class="glass-card p-6 rounded-3xl border-l-4 border-sky-500 shadow-xl">
+                        <div class="space-y-4">
+                            <div class="p-3 bg-sky-900/30 rounded-xl">
+                                <p class="text-[11px] font-bold text-amber-500 uppercase tracking-widest">Zakat Fitrah</p>
+                                <p class="text-[11px] text-sky-200">Wajib bagi setiap jiwa Muslim di bulan Ramadhan. Kadar: 2,5 kg beras.</p>
+                            </div>
+                            <div class="p-3 bg-sky-900/30 rounded-xl">
+                                <p class="text-[11px] font-bold text-sky-400 uppercase tracking-widest">Zakat Maal</p>
+                                <p class="text-[11px] text-sky-200">Zakat atas harta (uang/emas) yang telah mencapai Nisab dan disimpan selama 1 tahun.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,68 +205,183 @@
         </div>
     </section>
 
-    <!-- PAGE 6: ZAKAT & SOSIAL -->
-    <section id="sosial" class="py-24 px-6 bg-sky-950/20">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h3 class="serif text-4xl text-sky-100 mb-8 uppercase tracking-widest">Zakat & <span class="text-amber-400">Dampak Sosial</span></h3>
-            <p class="text-lg text-sky-300 leading-relaxed mb-12">
-                Puasa diakhiri dengan Zakat Fitrah, kewajiban sosial yang memastikan tidak ada satu pun orang miskin yang kelaparan saat Idul Fitri. Ini adalah bentuk manifestasi empati dan keadilan ekonomi dalam Islam.
-            </p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="p-4 bg-sky-900/30 rounded-2xl border border-sky-800 font-bold text-xs">Kepedulian</div>
-                <div class="p-4 bg-sky-900/30 rounded-2xl border border-sky-800 font-bold text-xs">Penyucian Harta</div>
-                <div class="p-4 bg-sky-900/30 rounded-2xl border border-sky-800 font-bold text-xs">Persaudaraan</div>
-                <div class="p-4 bg-sky-900/30 rounded-2xl border border-sky-800 font-bold text-xs">Keadilan</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 7: TIPS & NUTRISI -->
-    <section id="tips" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-100">Tips Puasa <span class="text-amber-400">Produktif</span></h3>
+    <!-- PAGE 3: HAKIKAT PUASA & RUKHSAH (TAMBAHAN) -->
+    <section id="puasa" class="py-24 px-6 bg-[#020617]">
+        <div class="max-w-5xl mx-auto">
+            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-100 uppercase tracking-widest">Hakikat <span class="text-amber-400">Puasa</span></h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Sahur -->
-                <div class="reveal glass-card p-8 rounded-[40px] border-l-4 border-sky-500">
-                    <h5 class="font-bold text-lg mb-4 text-sky-100 flex items-center gap-2">
-                        <i data-lucide="coffee"></i> Nutrisi Sahur
-                    </h5>
-                    <p class="text-xs text-sky-400 leading-relaxed">Fokus pada **Karbohidrat Kompleks** (Gandum, Nasi Merah) dan **Serat Buah**. Hindari makanan terlalu asin karena memicu rasa haus berlebih di siang hari.</p>
+                <!-- Rukun & Syarat -->
+                <div class="reveal glass-card p-8 rounded-[40px] border-t-2 border-amber-500">
+                    <h4 class="font-bold text-sky-100 mb-4 flex items-center gap-3"><i data-lucide="scroll" class="text-amber-400"></i> Dasar Syariat</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-[10px] text-amber-500 font-bold uppercase mb-2">Rukun Puasa:</p>
+                            <p class="text-xs text-sky-200 leading-relaxed">• Niat di malam hari<br>• Menahan diri (Imsak)</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-sky-400 font-bold uppercase mb-2">Syarat Wajib:</p>
+                            <p class="text-xs text-sky-200 leading-relaxed">• Islam & Baligh<br>• Berakal Sehat<br>• Mampu Secara Fisik</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Berbuka -->
-                <div class="reveal glass-card p-8 rounded-[40px] border-l-4 border-amber-500">
-                    <h5 class="font-bold text-lg mb-4 text-sky-100 flex items-center gap-2">
-                        <i data-lucide="utensils"></i> Nutrisi Berbuka
-                    </h5>
-                    <p class="text-xs text-sky-400 leading-relaxed">Awali dengan **Gula Alami** (Kurma & Air Putih). Berikan jeda 15-30 menit sebelum makan berat agar lambung tidak kaget.</p>
+
+                <!-- Rukhsah (MATERI BARU) -->
+                <div class="reveal glass-card p-8 rounded-[40px] border-t-2 border-sky-500">
+                    <h4 class="font-bold text-sky-100 mb-4 flex items-center gap-3"><i data-lucide="shield-check" class="text-sky-400"></i> Rukhsah (Keringanan)</h4>
+                    <p class="text-xs text-sky-300 mb-4 italic">Orang yang diperbolehkan tidak berpuasa (dengan syarat mengganti/fidyah):</p>
+                    <ul class="grid grid-cols-2 gap-2 text-[11px] text-sky-200 font-medium">
+                        <li>• Orang Sakit Parah</li>
+                        <li>• Musafir (Perjalanan)</li>
+                        <li>• Ibu Hamil/Menyusui</li>
+                        <li>• Lansia yang Lemah</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-24 px-6 bg-[#010413] text-center">
+    <!-- PAGE 4: ADAB & SUNNAH (MATERI BARU) -->
+    <section id="adab-section" class="py-24 px-6 bg-sky-950/10">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-100 uppercase tracking-widest">Adab & <span class="text-amber-400">Sunnah</span></h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="reveal p-6 border border-sky-800 rounded-3xl bg-white/5 flex flex-col items-center text-center">
+                    <i data-lucide="clock" class="text-amber-500 mb-4"></i>
+                    <h6 class="font-bold text-xs uppercase mb-2 text-sky-100">Mengakhirkan Sahur</h6>
+                    <p class="text-[10px] text-sky-400 leading-relaxed">Dianjurkan makan sahur di waktu yang mendekati fajar untuk stamina yang lebih baik.</p>
+                </div>
+                <div class="reveal p-6 border border-sky-800 rounded-3xl bg-white/5 flex flex-col items-center text-center">
+                    <i data-lucide="zap" class="text-sky-400 mb-4"></i>
+                    <h6 class="font-bold text-xs uppercase mb-2 text-sky-100">Segerakan Berbuka</h6>
+                    <p class="text-[10px] text-sky-400 leading-relaxed">Menyegerakan berbuka saat adzan maghrib berkumandang adalah sunnah Rasulullah SAW.</p>
+                </div>
+                <div class="reveal p-6 border border-sky-800 rounded-3xl bg-white/5 flex flex-col items-center text-center">
+                    <i data-lucide="smile" class="text-pink-400 mb-4"></i>
+                    <h6 class="font-bold text-xs uppercase mb-2 text-sky-100">Menjaga Lisan</h6>
+                    <p class="text-[10px] text-sky-400 leading-relaxed">Menahan diri dari ghibah, dusta, dan berkata kasar agar nilai pahala puasa tidak berkurang.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 5: AMALAN UTAMA & LAILATUL QADAR (MATERI BARU) -->
+    <section id="amalan-section" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="reveal text-center mb-16">
+                <h3 class="serif text-4xl text-sky-100 uppercase tracking-widest">Amalan <span class="text-amber-400">Terbaik</span></h3>
+                <p class="text-[10px] text-sky-500 font-bold uppercase mt-2">Memaksimalkan 30 Hari Suci</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="reveal glass-card p-8 rounded-[40px] flex flex-col md:flex-row gap-8 items-center border border-amber-500/20 shadow-[0_0_50px_rgba(245,158,11,0.05)]">
+                    <div class="md:w-1/3 text-center">
+                        <i data-lucide="sparkles" class="w-16 h-16 text-amber-400 mx-auto mb-4 animate-pulse"></i>
+                        <h4 class="serif text-2xl text-sky-100 leading-tight">Lailatul <br> Qadar</h4>
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-sm text-sky-300 leading-relaxed mb-4 uppercase font-bold tracking-widest text-[10px]">Malam Seribu Bulan</p>
+                        <p class="text-sm text-sky-200 leading-relaxed">
+                            Terjadi pada 10 malam terakhir Ramadhan. Beribadah di malam ini nilainya lebih baik daripada beribadah selama 1000 bulan (sekitar 83 tahun). Umat Muslim dianjurkan melakukan I'tikaf untuk mencarinya.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="reveal p-6 rounded-3xl bg-sky-900/20 border border-sky-800 flex gap-4">
+                        <i data-lucide="book-open" class="text-sky-400"></i>
+                        <div>
+                            <h6 class="font-bold text-sky-100 text-sm">Tadarus Al-Qur'an</h6>
+                            <p class="text-xs text-sky-400 leading-relaxed">Membaca dan memahami makna Al-Qur'an karena bulan Ramadhan adalah bulan turunnya kitab suci.</p>
+                        </div>
+                    </div>
+                    <div class="reveal p-6 rounded-3xl bg-sky-900/20 border border-sky-800 flex gap-4">
+                        <i data-lucide="heart" class="text-red-400"></i>
+                        <div>
+                            <h6 class="font-bold text-sky-100 text-sm">Sedekah & Berbagi</h6>
+                            <p class="text-xs text-sky-400 leading-relaxed">Rasulullah SAW adalah orang yang paling dermawan, dan kedermawanannya meningkat di bulan Ramadhan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 6: SAINS & BIOLOGI -->
+    <section id="sains" class="py-24 px-6 bg-[#020617] border-y border-sky-900/30">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-100 uppercase tracking-widest">Sains <span class="text-amber-400">&</span> Biologi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="reveal p-8 rounded-[40px] bg-blue-900/10 border border-sky-800 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-400 mb-6">
+                        <i data-lucide="refresh-ccw" class="w-8 h-8"></i>
+                    </div>
+                    <h6 class="font-bold text-sky-100 text-lg mb-2 uppercase tracking-widest">Autofagi Sel</h6>
+                    <p class="text-xs text-sky-400 leading-relaxed italic">"Proses detoksifikasi seluler di mana tubuh mendaur ulang sel yang rusak menjadi energi dan komponen sel baru yang sehat. Ini memperpanjang usia sel."</p>
+                </div>
+                <div class="reveal p-8 rounded-[40px] bg-amber-900/10 border border-amber-800 flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-amber-600/20 rounded-full flex items-center justify-center text-amber-400 mb-6">
+                        <i data-lucide="brain" class="w-8 h-8"></i>
+                    </div>
+                    <h6 class="font-bold text-sky-100 text-lg mb-2 uppercase tracking-widest">Growth Hormone</h6>
+                    <p class="text-xs text-sky-400 leading-relaxed italic">"Puasa meningkatkan produksi HGH (Human Growth Hormone) secara drastis, mempercepat pembakaran lemak, dan meningkatkan fungsi kognitif otak pelajar."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAGE 7: DIMENSI P5 & REFLEKSI (TAMBAHAN MATERI LENGKAP) -->
+    <section id="p5" class="py-24 px-6 bg-sky-950/20">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h3 class="serif text-4xl text-sky-100 mb-12 uppercase tracking-widest">Dimensi <span class="text-amber-400">P5</span></h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left mb-16">
+                <div class="glass-card p-6 rounded-3xl">
+                    <p class="font-bold text-amber-500 text-xs uppercase tracking-widest mb-2 leading-none">Beriman & Bertaqwa</p>
+                    <p class="text-[11px] text-sky-300">Menjalankan ibadah puasa dengan penuh keikhlasan sebagai bentuk ketaatan mutlak kepada Sang Pencipta.</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl">
+                    <p class="font-bold text-sky-400 text-xs uppercase tracking-widest mb-2 leading-none">Mandiri</p>
+                    <p class="text-[11px] text-sky-300">Belajar mengelola diri, nafsu, dan emosi secara mandiri selama 30 hari penuh demi kebaikan jiwa.</p>
+                </div>
+                <div class="glass-card p-6 rounded-3xl">
+                    <p class="font-bold text-emerald-400 text-xs uppercase tracking-widest mb-2 leading-none">Gotong Royong</p>
+                    <p class="text-[11px] text-sky-300">Mewujudkan kepedulian sosial melalui zakat dan berbagi makanan berbuka kepada kaum dhuafa.</p>
+                </div>
+            </div>
+            
+            <div class="p-10 rounded-[50px] border border-sky-800 bg-sky-900/10">
+                <h4 class="serif text-3xl text-sky-100 mb-4 italic">Refleksi Akhir Projek</h4>
+                <p class="text-sm text-sky-300 leading-relaxed italic max-w-2xl mx-auto">
+                    "Projek ini mengajarkan kami bahwa Ramadhan bukan sekadar tradisi, melainkan transformasi total manusia dari segi iman, sosial, dan kesehatan jasmani. Sebagai Pelajar Pancasila, kami belajar menjadi pribadi yang lebih sabar dan peduli."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-24 px-6 bg-[#010413] text-center border-t border-sky-900/30">
         <div class="reveal mb-12">
-            <i data-lucide="sparkles" class="w-12 h-12 text-amber-500/20 mx-auto mb-6"></i>
-            <h4 class="serif text-4xl text-sky-100 mb-4">Ramadhan Mubarak</h4>
-            <p class="text-sky-400/60 text-sm max-w-sm mx-auto uppercase tracking-widest font-black italic">Editor: Fikri • Kelas 9-2</p>
+            <img src="1773111398464.png" alt="Logo SMPN 3" class="w-16 h-16 mx-auto mb-6 opacity-40 grayscale hover:grayscale-0 transition">
+            <h4 class="serif text-4xl text-sky-100 mb-4 tracking-tighter italic">Ramadhan Kareem</h4>
+            <p class="text-sky-400/60 text-[10px] max-w-sm mx-auto uppercase tracking-[0.6em] font-black italic">SMP NEGERI 3 LEUWILIANG</p>
+            <p class="text-amber-500 font-bold text-[9px] uppercase tracking-widest mt-4">Penyusun Projek: Fikri • Kelas 9-2</p>
         </div>
         
-        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="bg-gradient-to-r from-sky-600 to-blue-800 text-white px-10 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition transform">Kembali Ke Atas</button>
+        <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="bg-gradient-to-r from-sky-600 to-blue-800 text-white px-10 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition transform text-[10px] uppercase tracking-widest">Kembali Ke Sampul</button>
         
-        <p class="mt-20 text-[9px] opacity-20 uppercase tracking-[0.6em]">Projek Penguatan Profil Pelajar Pancasila (P5) • SMP Merdeka</p>
+        <p class="mt-24 text-[8px] opacity-20 uppercase tracking-[0.7em]">Projek Penguatan Profil Pelajar Pancasila • SMPN 3 LEUWILIANG • 2026</p>
     </footer>
 
-    <!-- MODAL SISWA 9-2 -->
+    <!-- MODAL DAFTAR SISWA (32 ORANG) -->
     <div id="modal-students" class="fixed inset-0 z-[1000] hidden items-center justify-center p-6">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="hideStudents()"></div>
         <div class="glass-card relative w-full max-w-sm p-8 rounded-[50px] border border-amber-500/30 shadow-2xl animate-scaleIn">
-            <button onclick="hideStudents()" class="absolute right-6 top-6 text-amber-400"><i data-lucide="x"></i></button>
+            <button onclick="hideStudents()" class="absolute right-6 top-6 text-amber-400 hover:scale-125 transition"><i data-lucide="x"></i></button>
             <div class="text-center mb-6">
                 <i data-lucide="users" class="mx-auto text-amber-500 w-10 h-10 mb-2"></i>
                 <h3 class="serif text-2xl text-white">Siswa Kelas 9-2</h3>
-                <p class="text-[9px] text-sky-400 font-bold uppercase tracking-widest mt-1">Penyusun Ensiklopedia Digital</p>
+                <p class="text-[9px] text-sky-400 font-bold uppercase tracking-widest mt-1 leading-none">Tim Projek SMPN 3 Leuwiliang</p>
             </div>
             <div class="modal-scroll pr-2">
                 <ul class="space-y-2 text-sky-100 text-[13px] font-medium">
@@ -382,22 +419,18 @@
                     <li>• Ziffara</li>
                 </ul>
             </div>
-            <div class="mt-6 text-center border-t border-sky-900 pt-4">
-                <p class="text-[10px] text-amber-500 font-bold uppercase">Total: 32 Siswa</p>
-            </div>
         </div>
     </div>
 
-    <!-- Floating Top Button -->
-    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="fixed bottom-6 left-6 w-12 h-12 bg-sky-600/50 backdrop-blur-md rounded-full flex items-center justify-center z-40 border border-white/10 active:scale-90 transition">
+    <!-- Tombol Atas Melayang -->
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="fixed bottom-6 left-6 w-12 h-12 bg-sky-600/30 backdrop-blur-md rounded-full flex items-center justify-center z-40 border border-white/10 active:scale-90 transition">
         <i data-lucide="arrow-up" class="w-5 h-5"></i>
     </button>
 
     <script>
-        // Init Lucide Icons
         lucide.createIcons();
 
-        // Stars Generation
+        // Stars Background
         const starsContainer = document.getElementById('stars-container');
         for (let i = 0; i < 90; i++) {
             const star = document.createElement('div');
@@ -429,7 +462,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Scroll Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
