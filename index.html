@@ -92,6 +92,352 @@
     <!-- Watermark Pojok -->
     <div class="watermark-fikri">9-2 • EDITOR: FIKRI</div>
 
+    <!-- Background Stars -->
+    <div id="stars-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Modal Daftar Siswa (32 Orang) -->
+    <div id="modal-students" class="fixed inset-0 z-[1000] hidden items-center justify-center p-6">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-md" onclick="hideStudents()"></div>
+        <div class="glass-card relative w-full max-w-sm p-8 rounded-[40px] border border-amber-500/30 animate-scaleIn shadow-2xl">
+            <button onclick="hideStudents()" class="absolute right-6 top-6 text-amber-400"><i data-lucide="x"></i></button>
+            <div class="text-center mb-6">
+                <i data-lucide="users" class="mx-auto text-amber-500 w-10 h-10 mb-2"></i>
+                <h3 class="serif text-2xl text-white">Siswa Kelas 9-2</h3>
+                <p class="text-[9px] text-sky-400 font-bold uppercase tracking-widest mt-1">Tim Penyusun Projek P5</p>
+            </div>
+            <div class="modal-content-list pr-2">
+                <ul class="space-y-2 text-sky-100 text-[13px] font-medium">
+                    <li>• Ade Yoga</li>
+                    <li>• Adel</li>
+                    <li>• Ainun</li>
+                    <li>• Agis</li>
+                    <li>• Aji</li>
+                    <li>• Alvin</li>
+                    <li>• Aulia Indri</li>
+                    <li>• Aprilia</li>
+                    <li>• Daffa</li>
+                    <li>• Debi</li>
+                    <li>• Fikri</li>
+                    <li>• Irpan</li>
+                    <li>• Kania</li>
+                    <li>• Firman</li>
+                    <li>• Azhar</li>
+                    <li>• Refi</li>
+                    <li>• Rasya</li>
+                    <li>• Putri</li>
+                    <li>• Rafka</li>
+                    <li>• Rifani</li>
+                    <li>• Bagas</li>
+                    <li>• Sabrina</li>
+                    <li>• Kayla</li>
+                    <li>• Lastri</li>
+                    <li>• Andin</li>
+                    <li>• Mita</li>
+                    <li>• Rifki</li>
+                    <li>• Elisa</li>
+                    <li>• Supriatna</li>
+                    <li>• Sahdan</li>
+                    <li>• Windi</li>
+                    <li>• Ziffara</li>
+                </ul>
+            </div>
+            <div class="mt-6 text-center border-t border-sky-900 pt-4">
+                <p class="text-[10px] text-amber-500 font-bold">JUMLAH: 32 SISWA</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card px-6 py-4 flex justify-between items-center border-b border-sky-900/50">
+        <div class="flex items-center gap-2">
+            <i data-lucide="moon" class="text-amber-400 w-5 h-5"></i>
+            <span class="font-bold tracking-tighter text-sky-200 uppercase text-sm">P5.Ramadhan</span>
+        </div>
+        <button onclick="toggleSidebar()" class="text-sky-200"><i data-lucide="menu"></i></button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed inset-y-0 right-0 w-64 glass-card z-[500] translate-x-full transition-transform duration-500 p-8 flex flex-col gap-6">
+        <button onclick="toggleSidebar()" class="self-end text-amber-400"><i data-lucide="x"></i></button>
+        <p class="text-[10px] text-amber-500 font-bold uppercase border-b border-sky-900 pb-2">Navigasi Materi</p>
+        <a href="#cover" class="text-sm font-semibold hover:text-amber-400" onclick="toggleSidebar()">Sampul</a>
+        <a href="#p5-desc" class="text-sm font-semibold hover:text-amber-400" onclick="toggleSidebar()">Dimensi P5</a>
+        <a href="#sejarah" class="text-sm font-semibold hover:text-amber-400" onclick="toggleSidebar()">Sejarah</a>
+        <a href="#fiqh" class="text-sm font-semibold hover:text-amber-400" onclick="toggleSidebar()">Fiqh Puasa</a>
+        <a href="#detoks" class="text-sm font-semibold hover:text-amber-400" onclick="toggleSidebar()">Sains & Tubuh</a>
+        <a href="#refleksi" class="text-sm font-semibold hover:text-amber-400" onclick="toggleSidebar()">Refleksi</a>
+    </div>
+
+    <!-- SECTION 1: COVER -->
+    <section id="cover" class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-10 pb-40">
+        <div class="relative mb-8">
+            <svg width="110" height="110" viewBox="0 0 100 100" class="text-amber-100 fill-current drop-shadow-[0_0_20px_rgba(245,158,11,0.4)]">
+                <path d="M50 10A40 40 0 1 0 90 50A30 30 0 1 1 50 10Z" />
+            </svg>
+            <div class="absolute -right-2 top-8 animate-sway">
+                <i data-lucide="lamp" class="text-amber-500 w-8 h-8"></i>
+            </div>
+        </div>
+        <div class="z-10">
+            <h1 class="serif text-4xl text-sky-100 mb-0 tracking-tight">Keindahan</h1>
+            <h2 class="calligraphy text-5xl text-amber-400 -mt-2">Ramadhan</h2>
+            <div class="w-16 h-0.5 bg-amber-500 mx-auto my-6"></div>
+            <p class="text-sky-300 font-bold tracking-[0.2em] uppercase text-[9px] max-w-xs mx-auto mb-8">Laporan Projek Penguatan Profil Pelajar Pancasila</p>
+            <div class="px-5 py-2 rounded-full border border-sky-800 bg-sky-950/50 inline-block text-[9px] font-black tracking-[3px] text-amber-200">
+                9-2 • EDITOR: FIKRI
+            </div>
+        </div>
+
+        <div class="arrow-btn-container" onclick="showStudents()">
+            <p class="text-[8px] font-black text-amber-400 uppercase tracking-[4px] animate-pulse mb-1">Click tanda panah ini</p>
+            <div class="animate-bounce bg-sky-900/30 p-2 rounded-full border border-sky-800/40">
+                <i data-lucide="chevron-down" class="text-sky-200 w-6 h-6"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: DIMENSI P5 -->
+    <section id="p5-desc" class="py-24 px-6 bg-sky-950/20 border-y border-sky-900/30">
+        <div class="max-w-md mx-auto">
+            <div class="reveal mb-12 text-center">
+                <h3 class="serif text-3xl text-sky-100">Kaitan <span class="text-amber-400">P5</span></h3>
+                <p class="text-[10px] text-sky-400 mt-2 uppercase font-bold">Profil Pelajar Pancasila</p>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-4">
+                <div class="reveal glass-card p-6 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="shield-check" class="text-amber-500"></i>
+                        <h4 class="font-bold text-sm text-sky-100 uppercase">Iman & Taqwa</h4>
+                    </div>
+                    <p class="text-[12px] text-sky-300 leading-relaxed">Menjalankan perintah agama sebagai bentuk pengabdian kepada Tuhan Yang Maha Esa dan memperkuat akhlak mulia dalam keseharian.</p>
+                </div>
+                <div class="reveal glass-card p-6 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="user" class="text-sky-400"></i>
+                        <h4 class="font-bold text-sm text-sky-100 uppercase">Kemandirian</h4>
+                        <p class="text-[12px] text-sky-300 leading-relaxed">Belajar mengontrol diri (Self-Regulation) dan mendisiplinkan waktu melalui jadwal ibadah harian.</p>
+                    </div>
+                </div>
+                <div class="reveal glass-card p-6 rounded-3xl">
+                    <div class="flex items-center gap-3 mb-3">
+                        <i data-lucide="heart" class="text-red-400"></i>
+                        <h4 class="font-bold text-sm text-sky-100 uppercase">Gotong Royong</h4>
+                    </div>
+                    <p class="text-[12px] text-sky-300 leading-relaxed">Berbagi rezeki dan merasakan penderitaan sesama untuk membangun jiwa sosial yang tinggi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SEJARAH PUASA -->
+    <section id="sejarah" class="py-24 px-6">
+        <div class="max-w-md mx-auto">
+            <div class="reveal border-l-4 border-amber-500 pl-6">
+                <h3 class="serif text-3xl text-sky-100 mb-4">Sejarah <span class="text-amber-400">Singkat</span></h3>
+                <p class="text-sm text-sky-300 leading-relaxed mb-6">
+                    Kewajiban puasa Ramadhan turun pada tahun **ke-2 Hijriyah**, tepatnya di bulan Sya'ban. Perintah ini datang tidak lama setelah umat Islam berpindah kiblat dari Masjidil Aqsa ke Ka'bah. 
+                </p>
+                <div class="bg-sky-900/20 p-4 rounded-2xl italic text-[11px] text-sky-200">
+                    "Umat terdahulu pun diwajibkan berpuasa, namun tata caranya berbeda-beda sesuai risalah masing-masing nabi."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FIQH PUASA (LEBIH PANJANG) -->
+    <section id="fiqh" class="py-24 px-6 bg-[#020617]">
+        <div class="max-w-md mx-auto">
+            <h3 class="reveal serif text-4xl text-center mb-16 text-sky-50 uppercase tracking-widest">Fiqh Puasa</h3>
+            
+            <div class="space-y-10">
+                <!-- Syarat & Rukun -->
+                <div class="reveal glass-card p-6 rounded-[40px]">
+                    <h4 class="font-black text-amber-500 text-[10px] uppercase mb-6 tracking-widest">A. Dasar Ibadah</h4>
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-blue-600/20 flex items-center justify-center text-blue-400 text-xs font-bold">1</div>
+                            <div>
+                                <h5 class="font-bold text-sm text-sky-100">Syarat Wajib</h5>
+                                <p class="text-[11px] text-sky-400">Islam, Baligh, Berakal, Suci dari Haid, & Mampu.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-8 h-8 rounded-lg bg-amber-600/20 flex items-center justify-center text-amber-400 text-xs font-bold">2</div>
+                            <div>
+                                <h5 class="font-bold text-sm text-sky-100">Rukun Puasa</h5>
+                                <p class="text-[11px] text-sky-400">Niat (di malam hari) & Imsak (menahan diri dari fajar-maghrib).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rukhsah -->
+                <div class="reveal bg-sky-900/10 p-8 rounded-[40px] border border-sky-800/50">
+                    <h4 class="font-black text-sky-400 text-[10px] uppercase mb-4 tracking-widest">B. Rukhsah (Keringanan)</h4>
+                    <p class="text-[11px] text-sky-200 mb-4">Siapa yang boleh tidak berpuasa?</p>
+                    <ul class="text-[11px] text-sky-100 space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-400"></i> Orang sakit yang memberatkan</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-400"></i> Musafir (Perjalanan jauh)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-400"></i> Lansia yang tidak mampu lagi</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-400"></i> Ibu Hamil & Menyusui</li>
+                    </ul>
+                </div>
+
+                <!-- Sunnah -->
+                <div class="reveal glass-card p-8 rounded-[40px] border-t-2 border-amber-500">
+                    <h4 class="font-black text-amber-500 text-[10px] uppercase mb-4 tracking-widest">C. Sunnah-Sunnah</h4>
+                    <div class="grid grid-cols-2 gap-4 text-[10px]">
+                        <div class="bg-white/5 p-3 rounded-xl">• Mengakhirkan Sahur</div>
+                        <div class="bg-white/5 p-3 rounded-xl">• Menyegerakan Berbuka</div>
+                        <div class="bg-white/5 p-3 rounded-xl">• Berbuka dengan Kurma</div>
+                        <div class="bg-white/5 p-3 rounded-xl">• Banyak Bersedekah</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: SAINS & DETOKS -->
+    <section id="detoks" class="py-24 px-6 bg-gradient-to-b from-sky-950/20 to-transparent">
+        <div class="max-w-md mx-auto">
+            <h3 class="reveal serif text-3xl text-center mb-12 text-sky-100">Sains & <span class="text-amber-400">Detoksifikasi</span></h3>
+            
+            <!-- Timeline Detoks -->
+            <div class="reveal space-y-6 relative border-l-2 border-sky-800 ml-4 pl-8">
+                <div class="relative">
+                    <div class="absolute -left-[41px] w-4 h-4 rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]"></div>
+                    <h6 class="font-bold text-sky-100 text-sm">Jam 0 - 4</h6>
+                    <p class="text-[10px] text-sky-400">Kadar gula darah stabil, tubuh mulai beristirahat dari proses cerna.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -left-[41px] w-4 h-4 rounded-full bg-sky-500"></div>
+                    <h6 class="font-bold text-sky-100 text-sm">Jam 8 - 12</h6>
+                    <p class="text-[10px] text-sky-400">Proses Autofagi dimulai. Sel membuang racun dan bagian yang rusak.</p>
+                </div>
+                <div class="relative">
+                    <div class="absolute -left-[41px] w-4 h-4 rounded-full bg-green-500"></div>
+                    <h6 class="font-bold text-sky-100 text-sm">Jam 12+</h6>
+                    <p class="text-[10px] text-sky-400">Pembakaran lemak maksimal dan regenerasi sistem imun tubuh.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: REFLEKSI P5 -->
+    <section id="refleksi" class="py-24 px-6">
+        <div class="max-w-md mx-auto glass-card p-10 rounded-[50px] text-center border-amber-500/20 border">
+            <h3 class="serif text-3xl text-sky-100 mb-6">Refleksi Projek</h3>
+            <p class="text-[12px] text-sky-300 leading-relaxed italic mb-8">
+                "Melalui projek ini, kami belajar bahwa puasa bukan hanya soal lapar, tapi soal **Kepemimpinan Diri**. Kami belajar menghargai makanan, berempati pada sesama, dan menjaga fokus meski dalam kondisi lelah. Inilah karakter Pelajar Pancasila yang sesungguhnya."
+            </p>
+            <div class="w-12 h-0.5 bg-amber-500 mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-20 px-6 text-center">
+        <div class="reveal mb-12">
+            <i data-lucide="quote" class="text-amber-500/10 w-16 h-16 mx-auto mb-4"></i>
+            <p class="serif text-2xl text-white italic">"Puasa adalah perisai, maka gunakanlah dengan bijak."</p>
+        </div>
+        
+        <div class="space-y-4">
+            <p class="text-[9px] font-black text-amber-500 uppercase tracking-[6px]">EDITOR: FIKRI • KELAS 9-2</p>
+            <div class="flex justify-center gap-4 text-sky-600">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                <i data-lucide="award" class="w-4 h-4"></i>
+            </div>
+            <p class="text-[7px] opacity-20 mt-12">DIBUAT UNTUK PROJEK P5 SMP • &copy; 2024</p>
+        </div>
+    </footer>
+
+    <!-- Floating Top Btn -->
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="fixed bottom-6 left-6 w-10 h-10 bg-blue-600/30 backdrop-blur-md rounded-full flex items-center justify-center z-50 border border-white/10">
+        <i data-lucide="arrow-up" class="w-4 h-4"></i>
+    </button>
+
+    <script>
+        lucide.createIcons();
+
+        // Star generation logic
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 70; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 2 + 0.5;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.setProperty('--d', `${Math.random() * 3 + 2}s`);
+            starsContainer.appendChild(star);
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('translate-x-full');
+        }
+
+        function showStudents() {
+            const modal = document.getElementById('modal-students');
+            modal.classList.remove('hidde        .animate-sway { animation: sway 4s ease-in-out infinite; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.9; }
+        }
+        .star { position: absolute; background: white; border-radius: 50%; animation: twinkle var(--d) infinite; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(186, 230, 253, 0.1);
+        }
+
+        .watermark-fikri {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            z-index: 100;
+            background: rgba(12, 74, 110, 0.8);
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid var(--gold);
+            font-size: 7px;
+            font-weight: 800;
+            color: #bae6fd;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        .modal-content-list {
+            max-height: 50vh;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) transparent;
+        }
+
+        .arrow-btn-container {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 120;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body class="islamic-pattern">
+
+    <!-- Watermark Pojok -->
+    <div class="watermark-fikri">9-2 • EDITOR: FIKRI</div>
+
 <div class="flex justify-center gap-4 text-sky-600">
     <i data-lucide="instagram" class="w-4 h-4"></i>
     <i data-lucide="award" class="w-4 h-4"></i>
