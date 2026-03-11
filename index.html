@@ -98,6 +98,63 @@
 </head>
 <body class="islamic-pattern">
 
+<audio id="laguRamadhan" src="Ramadhan Tiba - Opick (Lirik Lagu).mp3" loop muted></audio>
+
+<div id="musicControl" onclick="toggleMusik()" style="
+    position: fixed;
+    bottom: 10px;      /* Jarak dari bawah */
+    left: 45%;         /* Geser ke tengah */
+    transform: translateX(-50%); /* Agar benar-benar center */
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 2px solid #FFD700; /* Warna Emas agar senada dengan teks */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); /* Efek glow emas halus */
+    transition: all 0.3s ease;
+">
+    <span id="musicIcon" style="font-size: 30px;">🔈</span>
+</div>
+
+
+<script>
+    var audio = document.getElementById("laguRamadhan");
+    var icon = document.getElementById("musicIcon");
+    var control = document.getElementById("musicControl");
+
+    function toggleMusik() {
+        if (audio.muted) {
+            audio.muted = false;
+            audio.play();
+            icon.innerHTML = "🔊";
+            control.style.border = "1px solid #FFD700"; // Warna emas saat nyala
+        } else {
+            audio.muted = true;
+            icon.innerHTML = "🔈";
+            control.style.border = "1px solid rgba(255, 255, 255, 0.3)";
+        }
+    }
+
+    // Biar otomatis main saat user scroll atau klik pertama kali
+    window.addEventListener('click', function() {
+        if (audio.muted) {
+            audio.muted = false;
+            audio.play();
+            icon.innerHTML = "🔊";
+            control.style.border = "1px solid #FFD700";
+        }
+    }, { once: true });
+</script>
+
+
+
     <!-- Watermark Editor -->
     <div class="watermark-fikri">9-2 • EDITOR: FIKRI</div>
 
@@ -449,6 +506,25 @@
         
         <p class="text-[8px] opacity-20 uppercase tracking-[0.6em]">Projek Penguatan Profil Pelajar Pancasila • SMPN 3 LEUWILIANG • 2026</p>
     </footer>
+    
+    <p class="text-[25px] opacity 20 uppercase tracking-[0.6em]">Album 9-2</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="reveal">
+                    <img src="Screenshot_2026_0105_120720.png" alt="Sholat" class="rounded-[40px] shadow-2xl border-2 border-sky-800">
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="reveal">
+                    <img src="Screenshot_2026_0105_120642.png" alt="Sholat" class="rounded-[40px] shadow-2xl border-2 border-sky-800">
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="reveal">
+                    <img src="Screenshot_2026_0311_132954.png" alt="Sholat" class="rounded-[40px] shadow-2xl border-2 border-sky-800">
+                </div>
+
+
 
     <!-- MODAL DAFTAR SISWA (32 SISWA) -->
     <div id="modal-students" class="fixed inset-0 z-[1000] hidden items-center justify-center p-6">
